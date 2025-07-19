@@ -186,9 +186,14 @@ export default function WritingArea({ selectedPrompt }: WritingAreaProps) {
         </div>
       </div>
 
-      {/* Essay Validation Section */}
+      {/* Essay Validation Section - Integrated into main card */}
       {selectedPrompt && (
-        <div className="mt-6">
+        <div className="border-t border-gray-200 mt-6 pt-6">
+          <div className="flex items-center mb-4">
+            <div className="flex-1 border-t border-gray-300"></div>
+            <span className="px-4 text-sm font-medium text-gray-500 bg-white">Submit for AI Review</span>
+            <div className="flex-1 border-t border-gray-300"></div>
+          </div>
           <EssayValidationComponent 
             content={content} 
             prompt={selectedPrompt.content} 
