@@ -29,24 +29,27 @@ export default function Timer() {
             <Button 
               onClick={start}
               disabled={isRunning}
-              className="flex-1 bg-green-600 hover:bg-green-700 text-sm"
+              variant={isRunning ? "secondary" : "default"}
+              className="flex-1 bg-green-600 hover:bg-green-700 disabled:bg-gray-300 disabled:text-gray-500 text-white text-sm font-medium py-2"
             >
-              <Play className="mr-1 h-3 w-3" />
+              <Play className="mr-1 h-4 w-4" />
               Start
             </Button>
             <Button 
               onClick={pause}
               disabled={!isRunning}
-              className="flex-1 bg-orange-600 hover:bg-orange-700 text-sm"
+              variant={!isRunning ? "secondary" : "default"}
+              className="flex-1 bg-orange-600 hover:bg-orange-700 disabled:bg-gray-300 disabled:text-gray-500 text-white text-sm font-medium py-2"
             >
-              <Pause className="mr-1 h-3 w-3" />
+              <Pause className="mr-1 h-4 w-4" />
               Pause
             </Button>
             <Button 
               onClick={reset}
-              className="flex-1 bg-red-600 hover:bg-red-700 text-sm"
+              variant="outline"
+              className="flex-1 border-red-300 text-red-600 hover:bg-red-50 hover:border-red-400 text-sm font-medium py-2"
             >
-              <Square className="mr-1 h-3 w-3" />
+              <Square className="mr-1 h-4 w-4" />
               Reset
             </Button>
           </div>
