@@ -20,36 +20,37 @@ export default function Timer() {
           Practice Timer
         </CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="p-4">
         <div className="text-center">
           <div className="text-4xl font-bold text-blue-600 mb-4">
             {formatTime(minutes * 60 + seconds)}
           </div>
-          <div className="flex space-x-2">
+          <div className="grid grid-cols-3 gap-2 w-full">
             <Button 
               onClick={start}
               disabled={isRunning}
-              variant={isRunning ? "secondary" : "default"}
-              className="flex-1 bg-green-600 hover:bg-green-700 disabled:bg-gray-300 disabled:text-gray-500 text-white text-sm font-medium py-2"
+              size="sm"
+              className="bg-green-600 hover:bg-green-700 disabled:bg-gray-300 disabled:text-gray-500 text-white text-xs font-medium"
             >
-              <Play className="mr-1 h-4 w-4" />
+              <Play className="mr-1 h-3 w-3" />
               Start
             </Button>
             <Button 
               onClick={pause}
               disabled={!isRunning}
-              variant={!isRunning ? "secondary" : "default"}
-              className="flex-1 bg-orange-600 hover:bg-orange-700 disabled:bg-gray-300 disabled:text-gray-500 text-white text-sm font-medium py-2"
+              size="sm"
+              className="bg-orange-600 hover:bg-orange-700 disabled:bg-gray-300 disabled:text-gray-500 text-white text-xs font-medium"
             >
-              <Pause className="mr-1 h-4 w-4" />
+              <Pause className="mr-1 h-3 w-3" />
               Pause
             </Button>
             <Button 
               onClick={reset}
               variant="outline"
-              className="flex-1 border-red-300 text-red-600 hover:bg-red-50 hover:border-red-400 text-sm font-medium py-2"
+              size="sm"
+              className="border-red-300 text-red-600 hover:bg-red-50 hover:border-red-400 text-xs font-medium"
             >
-              <Square className="mr-1 h-4 w-4" />
+              <Square className="mr-1 h-3 w-3" />
               Reset
             </Button>
           </div>
