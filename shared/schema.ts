@@ -32,7 +32,21 @@ export const insertPromptSchema = createInsertSchema(prompts).omit({
   id: true,
 });
 
+// Essay validation result schema
+export const essayValidationSchema = z.object({
+  score: z.number().min(0).max(9), // IELTS score 0-9
+  taskResponse: z.number().min(0).max(9),
+  coherenceCohesion: z.number().min(0).max(9),
+  lexicalResource: z.number().min(0).max(9),
+  grammaticalRange: z.number().min(0).max(9),
+  feedback: z.string(),
+  strengths: z.array(z.string()),
+  improvements: z.array(z.string()),
+  wordCount: z.number(),
+});
+
 export type Essay = typeof essays.$inferSelect;
 export type InsertEssay = z.infer<typeof insertEssaySchema>;
 export type Prompt = typeof prompts.$inferSelect;
 export type InsertPrompt = z.infer<typeof insertPromptSchema>;
+export type EssayValidation = z.infer<typeof essayValidationSchema>;

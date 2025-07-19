@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertEssaySchema } from "@shared/schema";
+import { validateEssay } from "./openai-validator";
 import { z } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -120,6 +121,31 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(prompt);
     } catch (error) {
       res.status(500).json({ message: "Failed to fetch prompt" });
+    }
+  });
+
+  // Validate essay with OpenAI
+  app.post("/api/validate-essay", async (req, res) => {
+    try {
+      const validationSchema = z.object({
+        content: z.string().min(1, "Essay content is required"),
+        prompt: z.string().min(1, "Prompt is required"),
+      });
+
+      const { content, prompt } = validationSchema.parse(req.body);
+
+      if (!process.env.OPENAI_API_KEY) {
+        return res.status(500).json({ message: "OpenAI API key not configured" });
+      }
+
+      const validation = await validateEssay(content, prompt);
+      res.json(validation);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ message: "Invalid request data", errors: error.errors });
+      }
+      console.error("Essay validation error:", error);
+      res.status(500).json({ message: "Failed to validate essay" });
     }
   });
 

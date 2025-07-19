@@ -90,6 +90,8 @@ export class MemStorage implements IStorage {
       id,
       createdAt: now,
       updatedAt: now,
+      wordCount: insertEssay.wordCount ?? 0,
+      timeSpent: insertEssay.timeSpent ?? 0,
     };
     this.essays.set(id, essay);
     return essay;
@@ -130,6 +132,7 @@ export class MemStorage implements IStorage {
     const prompt: Prompt = {
       ...insertPrompt,
       id,
+      timeLimit: insertPrompt.timeLimit ?? 40,
     };
     this.prompts.set(id, prompt);
     return prompt;

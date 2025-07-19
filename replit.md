@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a full-stack web application designed to help users practice IELTS writing skills. The application provides a comprehensive writing environment with real-time word counting, timer functionality, writing prompts, and feedback mechanisms to improve essay writing performance.
+This is a full-stack web application designed to help users practice IELTS writing skills. The application provides a comprehensive writing environment with real-time word counting, timer functionality, writing prompts, AI-powered essay validation, and detailed feedback mechanisms to improve essay writing performance.
 
 ## User Preferences
 
@@ -38,7 +38,8 @@ Preferred communication style: Simple, everyday language.
 3. **Prompt Library**: Categorized writing prompts with difficulty levels
 4. **Auto-save Functionality**: Automatic saving of essay content to localStorage
 5. **Export Capabilities**: Text file export functionality for completed essays
-6. **Responsive Design**: Mobile-first approach with collapsible sidebar
+6. **AI Essay Validation**: OpenAI-powered essay scoring and feedback system with IELTS band scores
+7. **Responsive Design**: Mobile-first approach with collapsible sidebar
 
 ### Database Schema
 - **Essays Table**: Stores user essays with metadata (title, content, word count, time spent)
@@ -58,7 +59,8 @@ Preferred communication style: Simple, everyday language.
 3. **Real-time Updates**: Word count, character count, and progress are calculated live
 4. **Timer Management**: Independent timer system with start/pause/reset functionality
 5. **Data Persistence**: Essays can be saved to database via API endpoints
-6. **Export Flow**: Local content can be exported as text files
+6. **AI Validation**: Essays are analyzed by OpenAI GPT-4o for IELTS scoring and feedback
+7. **Export Flow**: Local content can be exported as text files
 
 ## External Dependencies
 
@@ -69,6 +71,7 @@ Preferred communication style: Simple, everyday language.
 - **Styling**: Tailwind CSS with PostCSS processing
 - **Date Handling**: date-fns for date manipulation
 - **Icons**: Lucide React for consistent iconography
+- **AI Integration**: OpenAI GPT-4o for essay validation and scoring
 
 ### Development Tools
 - **Build System**: Vite with React plugin and TypeScript support

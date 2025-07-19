@@ -6,6 +6,7 @@ import { Trash2, Save, FileText, Clock, AlignLeft, Download, CheckSquare } from 
 import { useAutoSave } from "@/hooks/use-auto-save";
 import { useToast } from "@/hooks/use-toast";
 import { exportText } from "@/lib/export";
+import EssayValidationComponent from "@/components/essay-validation";
 import type { Prompt } from "@shared/schema";
 
 interface WritingAreaProps {
@@ -184,6 +185,16 @@ export default function WritingArea({ selectedPrompt }: WritingAreaProps) {
           </div>
         </div>
       </div>
+
+      {/* Essay Validation Section */}
+      {selectedPrompt && (
+        <div className="mt-6">
+          <EssayValidationComponent 
+            content={content} 
+            prompt={selectedPrompt.content} 
+          />
+        </div>
+      )}
     </Card>
   );
 }
